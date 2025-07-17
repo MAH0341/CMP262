@@ -8,6 +8,11 @@ const app = express();
 const hostname = '127.0.0.1'; //localhost
 const port =  8005;
 
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  next();
+});
+
 app.use(express.static('views'));
 
 app.get('/', (req, res) => {
